@@ -15,7 +15,7 @@
     <div class="col-md-6">
       <h2 class="mb-4">Bienvenido a la Página Autenticada</h2>
       <p>¡Has iniciado sesión con éxito!</p>
-      <button class="btn btn-danger" onclick="logout()">Cerrar Sesión</button>
+      <button class="btn btn-danger" id="logoutBtn">Cerrar Sesión</button>
     </div>
   </div>
 </div>
@@ -39,8 +39,8 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // Función para cerrar sesión
-  function logout() {
+  // Configurar el evento click para el botón de cerrar sesión
+  document.getElementById("logoutBtn").addEventListener("click", function() {
     signOut(auth)
       .then(function () {
         // Redirigir a la página de inicio o a donde desees
@@ -49,7 +49,7 @@
       .catch(function (error) {
         console.error("Error al cerrar sesión: ", error);
       });
-  }
+  });
 </script>
 
 </body>
