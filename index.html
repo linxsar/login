@@ -58,6 +58,9 @@
         // Inicio de sesión exitoso
         const user = userCredential.user;
         console.log("Usuario autenticado: ", user);
+
+        // Redirigir a la página autenticada
+        window.location.href = "user.html";
       })
       .catch(function (error) {
         // Manejo de errores
@@ -83,6 +86,7 @@
 
 </body>
 </html>
+
 
 
 
