@@ -81,6 +81,19 @@
   // Adjuntar el evento click después de que la página se haya cargado completamente
   document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("loginBtn").addEventListener("click", login);
+
+    // Escuchar el evento keypress en los campos de entrada
+    document.getElementById("email").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        login();
+      }
+    });
+
+    document.getElementById("password").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        login();
+      }
+    });
   });
 </script>
 
