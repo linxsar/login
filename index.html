@@ -32,7 +32,7 @@
 <!-- Firebase JavaScript SDK -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
   // Configuración de Firebase - Reemplaza con tus propias credenciales
   const firebaseConfig = {
@@ -60,7 +60,7 @@
         console.log("Usuario autenticado: ", user);
 
         // Redirigir a la página autenticada
-        window.location.href = "user.html";
+        window.location.href = "ruta-de-tu-pagina-autenticada.html";
       })
       .catch(function (error) {
         // Manejo de errores
@@ -86,8 +86,3 @@
 
 </body>
 </html>
-
-
-
-
-
