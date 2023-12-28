@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Página Autenticada</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="mb-4">Bienvenido a la Página Autenticada</h2>
+      <p>¡Has iniciado sesión con éxito!</p>
+      <button class="btn btn-danger" onclick="logout()">Cerrar Sesión</button>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase JavaScript SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  // Configuración de Firebase - Reemplaza con tus propias credenciales
+  const firebaseConfig = {
+    apiKey: "AIzaSyATbjGhlBfd4YgJ8fFV3P9xzlFzFTzBqb0",
+    authDomain: "login-ac17f.firebaseapp.com",
+    projectId: "login-ac17f",
+    storageBucket: "login-ac17f.appspot.com",
+    messagingSenderId: "255116496732",
+    appId: "1:255116496732:web:31c0e0f4f57b69586e3b99"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Función para cerrar sesión
+  function logout() {
+    signOut(auth)
+      .then(function () {
+        // Redirigir a la página de inicio o a donde desees
+        window.location.href = "index.html";
+      })
+      .catch(function (error) {
+        console.error("Error al cerrar sesión: ", error);
+      });
+  }
+</script>
+
+</body>
+</html>
