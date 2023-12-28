@@ -63,7 +63,15 @@
         // Manejo de errores
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.error("Error de autenticación: ", errorMessage);
+        
+        if (errorCode === 'auth/user-not-found') {
+          // El usuario no existe
+          alert('El usuario no existe. Por favor, regístrate.');
+        } else {
+          // Otro tipo de error
+          console.error("Error de autenticación: ", errorMessage);
+          alert('Error de autenticación. Por favor, inténtalo de nuevo.');
+        }
       });
   }
 
