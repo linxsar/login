@@ -7,42 +7,6 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Firebase JavaScript SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-    // Configuración de Firebase - Reemplaza con tus propias credenciales
-    const firebaseConfig = {
-      apiKey: "AIzaSyATbjGhlBfd4YgJ8fFV3P9xzlFzFTzBqb0",
-      authDomain: "login-ac17f.firebaseapp.com",
-      projectId: "login-ac17f",
-      storageBucket: "login-ac17f.appspot.com",
-      messagingSenderId: "255116496732",
-      appId: "1:255116496732:web:31c0e0f4f57b69586e3b99"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    // Función para el inicio de sesión
-    async function login() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        console.log("Usuario autenticado:", user);
-      } catch (error) {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Error de autenticación:", errorMessage);
-      }
-    }
-  </script>
 </head>
 <body>
 
@@ -50,7 +14,7 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <h2 class="mb-4">Inicio de Sesión</h2>
-      <form id="loginForm" onsubmit="event.preventDefault(); login();">
+      <form id="loginForm">
         <div class="form-group">
           <label for="email">Correo electrónico:</label>
           <input type="email" class="form-control" id="email" required>
@@ -59,15 +23,53 @@
           <label for="password">Contraseña:</label>
           <input type="password" class="form-control" id="password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        <button type="button" class="btn btn-primary" onclick="login()">Iniciar sesión</button>
       </form>
     </div>
   </div>
 </div>
 
+<!-- Firebase JavaScript SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+  // Configuración de Firebase - Reemplaza con tus propias credenciales
+  const firebaseConfig = {
+    apiKey: "AIzaSyATbjGhlBfd4YgJ8fFV3P9xzlFzFTzBqb0",
+    authDomain: "login-ac17f.firebaseapp.com",
+    projectId: "login-ac17f",
+    storageBucket: "login-ac17f.appspot.com",
+    messagingSenderId: "255116496732",
+    appId: "1:255116496732:web:31c0e0f4f57b69586e3b99"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Función para el inicio de sesión
+  function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(function (userCredential) {
+        // Inicio de sesión exitoso
+        const user = userCredential.user;
+        console.log("Usuario autenticado: ", user);
+      })
+      .catch(function (error) {
+        // Manejo de errores
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error("Error de autenticación: ", errorMessage);
+      });
+  }
+</script>
+
 </body>
 </html>
-
 
 
 
