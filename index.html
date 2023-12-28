@@ -32,7 +32,7 @@
 <!-- Firebase JavaScript SDK -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import { getAuth, setPersistence, browserSessionPersistence } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
   // Configuración de Firebase - Reemplaza con tus propias credenciales
   const firebaseConfig = {
@@ -44,9 +44,10 @@
     appId: "1:255116496732:web:31c0e0f4f57b69586e3b99"
   };
 
-  // Initialize Firebase
+  // Initialize Firebase with session persistence
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
+  setPersistence(auth, browserSessionPersistence);
 
   // Función para el inicio de sesión
   function login() {
